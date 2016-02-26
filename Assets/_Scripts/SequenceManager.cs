@@ -8,7 +8,19 @@ public class SequenceNode{
     public SequenceNodeType type;
     public bool receive;
     public string text;
-    public int[] takers;
+    public int[] talkers;
+
+    public SequenceNode(string text, bool receive){
+        this.type = SequenceNodeType.SMS;
+        this.text = text;
+        this.receive = receive;
+    }
+
+    public SequenceNode(string text, int[] talkers){
+        this.type = SequenceNodeType.DIALOG;
+        this.text = text;
+        this.talkers = talkers;
+    }
 }
 
 public class SequenceManager : MonoBehaviour {
@@ -16,21 +28,24 @@ public class SequenceManager : MonoBehaviour {
 
     public List<SequenceNode> current_sequence;
 
-
-	void Start () {
+    void Awake(){
         S = this;
         this.current_sequence = null;
+    }
+	void Start () {
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (this.current_sequence != null && this.current_sequence.Count > 0) {
-            if (Input.GetMouseButtonDown (0)) {
+        if (Input.GetMouseButtonDown (0)) {
+            if (this.current_sequence != null && this.current_sequence.Count > 0) {
                 SequenceNode current = current_sequence [0];
                 current_sequence.Remove (current);
                 runNode (current);
-            }
-        }
+            }else
+                Chat.S.fade_out (GameObject.Find("content"));
+        } 
 	}
 
     void runNode(SequenceNode sn){
@@ -43,7 +58,7 @@ public class SequenceManager : MonoBehaviour {
             }
             break;
         case SequenceNodeType.DIALOG:
-            Chat.S.talk (sn.takers, sn.text);
+            Chat.S.talk (sn.talkers, sn.text);
             break;
         }
     }
