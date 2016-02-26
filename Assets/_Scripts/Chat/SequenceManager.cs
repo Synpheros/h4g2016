@@ -9,18 +9,20 @@ public class SequenceNode{
     public bool receive;
     public string text;
     public string talker;
+    public bool amistad;
     public int[] talkers;
 
     public SequenceNode(string action){
         this.type = SequenceNodeType.ACTION;
-        this.text = text;
+        this.text = action;
     }
 
-    public SequenceNode(string text, bool receive, string talker = ""){
+    public SequenceNode(string text, bool receive, string talker = "", bool amistad = false){
         this.type = SequenceNodeType.SMS;
         this.text = text;
         this.talker = talker;
         this.receive = receive;
+        this.amistad = amistad;
     }
 
     public SequenceNode(string text, int[] talkers){
@@ -59,17 +61,28 @@ public class SequenceManager : MonoBehaviour {
     void runNode(SequenceNode sn){
         switch (sn.type) {
         case SequenceNodeType.SMS:
-            if (sn.receive) {
-                Chat.S.receiveMessage (sn.text,sn.talker);
-            } else {
-                Chat.S.sendMessage (sn.text);
-            }
+            if (!sn.amistad) {
+                if (sn.receive) {
+                    Chat.S.receiveMessage (sn.text, sn.talker);
+                } else {
+                    Chat.S.sendMessage (sn.text);
+                }
+            } else
+                Chat.S.mensajeAmistad (sn.talker);
             break;
         case SequenceNodeType.DIALOG:
             Chat.S.talk (sn.talkers, sn.text);
             break;
         case SequenceNodeType.ACTION:
+            switch (sn.text) {
+            case "ShootBall":
                 shootBall ();
+                break;
+            case "Sleep":
+                closeEyes ();
+                break;
+            default: break;
+            }
             break;
         }
     }
@@ -78,5 +91,9 @@ public class SequenceManager : MonoBehaviour {
         PrefabUtils.LoadPrefab (GameObject.Find ("Chat").transform, bola).GetComponent<PaperBall>().onHitPlayer = ()=>{
             GameObject.Find ("Background").GetComponent<Shake>().DoShake();
         };
+    }
+
+    void closeEyes(){
+        GameObject.Find ("Eyes").GetComponent<Sleep>().sleep();
     }
 }

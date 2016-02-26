@@ -28,7 +28,8 @@ public class Bubble : MonoBehaviour {
     }
 
     public void resize(){
-        this.GetComponent<Text> ().text = this.text;
+        if (this.name != "Amistad(Clone)")
+            this.GetComponent<Text> ().text = this.text;
         foreach (Transform t in transform) {
             if (t.GetComponent<Text> () != null){
                 if (t.transform.name == "bubble_text") {
