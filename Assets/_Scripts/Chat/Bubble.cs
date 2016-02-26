@@ -8,14 +8,13 @@ public class Bubble : MonoBehaviour {
     private BubbleState state = BubbleState.STOP;
 
     public string text;
+    public string talker;
 
     private Vector2 finalPosition;
 
 	// Use this for initialization
 	void Start () {
         resize ();
-
-        Debug.Log (this.GetComponent<RectTransform> ().rect.width);
 	}
 	
 	// Update is called once per frame
@@ -31,9 +30,11 @@ public class Bubble : MonoBehaviour {
     public void resize(){
         this.GetComponent<Text> ().text = this.text;
         foreach (Transform t in transform) {
-            if (t.GetComponent<Text> () != null) {
-                t.GetComponent<Text> ().text = this.text;
-                break;
+            if (t.GetComponent<Text> () != null){
+                if (t.transform.name == "bubble_text") {
+                    t.GetComponent<Text> ().text = this.text;
+                } else
+                    t.GetComponent<Text> ().text = this.talker;
             }
         }
     }

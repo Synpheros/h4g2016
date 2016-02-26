@@ -53,6 +53,7 @@ public class Chat : MonoBehaviour {
     void addCharacter(){
         this.current_text = text_to_show.Substring (0, current_text.Length+1);
         GameObject.Find ("texto_textochat").GetComponent<Text> ().text = current_text;
+
     }
 
     public void sendMessage(string text){
@@ -69,10 +70,10 @@ public class Chat : MonoBehaviour {
 
         this.bubbles.Add (bubble);
 
-        this.pushBubbles (0f);
+        this.pushBubbles (75f);
     }
 
-    public void receiveMessage(string text){
+    public void receiveMessage(string text, string talker){
         GameObject bubble = GameObject.Instantiate (receiveBubble);
         bubble.transform.SetParent (content.transform);
 
@@ -81,12 +82,13 @@ public class Chat : MonoBehaviour {
 
         bubble.GetComponent<Bubble> ().text = text;
         bubble.GetComponent<Bubble> ().resize ();
+        bubble.GetComponent<Bubble> ().talker = talker;
 
         bubble.transform.localPosition = new Vector3 (200  + (bubble.GetComponent<RectTransform> ().rect.width/2), 0, 0);
 
         this.bubbles.Add (bubble);
 
-        this.pushBubbles (0f);
+        this.pushBubbles (75f);
     }
 
     private int[] talkers = null;
@@ -115,7 +117,7 @@ public class Chat : MonoBehaviour {
 
     public void pushBubbles(float height){
         foreach (GameObject go in bubbles) {
-            go.GetComponent<Bubble>().moveTo(new Vector3 (go.transform.localPosition.x, go.transform.localPosition.y + height + 50, go.transform.localPosition.z));
+            go.GetComponent<Bubble>().moveTo(new Vector3 (go.transform.localPosition.x, go.transform.localPosition.y + height, go.transform.localPosition.z));
         }
     }
 
@@ -126,11 +128,11 @@ public class Chat : MonoBehaviour {
         {
             if(graphics[i].GetComponent<Text>() != null || graphics[i].GetComponent<Image>() != null)
                 if (i == 0 || i > 3)
-                    graphics [i].CrossFadeAlpha (1f, 1.5f, false);
+                    graphics [i].CrossFadeAlpha (1f, 0.5f, false);
                  else if (this.talkers [i - 1] != -1) {
-                    graphics [i].CrossFadeAlpha (1f, 1.5f, false);
+                    graphics [i].CrossFadeAlpha (1f, 0.5f, false);
                 }else
-                    graphics[i].CrossFadeAlpha(0f, 1.5f, false);
+                    graphics[i].CrossFadeAlpha(0f, 0.5f, false);
                 
         }
     }
@@ -140,7 +142,7 @@ public class Chat : MonoBehaviour {
 
         for (int i = 0; i < graphics.Length; ++i)
         {
-            graphics[i].CrossFadeAlpha(0f, 1.5f, false);
+            graphics[i].CrossFadeAlpha(0f, 0.5f, false);
         }
     }
 

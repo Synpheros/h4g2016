@@ -8,11 +8,13 @@ public class SequenceNode{
     public SequenceNodeType type;
     public bool receive;
     public string text;
+    public string talker;
     public int[] talkers;
 
-    public SequenceNode(string text, bool receive){
+    public SequenceNode(string text, bool receive, string talker = ""){
         this.type = SequenceNodeType.SMS;
         this.text = text;
+        this.talker = talker;
         this.receive = receive;
     }
 
@@ -52,7 +54,7 @@ public class SequenceManager : MonoBehaviour {
         switch (sn.type) {
         case SequenceNodeType.SMS:
             if (sn.receive) {
-                Chat.S.receiveMessage (sn.text);
+                Chat.S.receiveMessage (sn.text,sn.talker);
             } else {
                 Chat.S.sendMessage (sn.text);
             }
