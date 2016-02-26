@@ -7,6 +7,8 @@ public class Bubble : MonoBehaviour {
     private enum BubbleState {STOP,MOVING};
     private BubbleState state = BubbleState.STOP;
 
+
+
     public string text;
 
     private Vector2 finalPosition;
