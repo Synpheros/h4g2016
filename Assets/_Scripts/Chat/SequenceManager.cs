@@ -12,6 +12,7 @@ public class SequenceNode{
     public bool amistad;
     public int[] talkers;
 
+
     public SequenceNode(string action){
         this.type = SequenceNodeType.ACTION;
         this.text = action;
@@ -35,8 +36,11 @@ public class SequenceNode{
 public class SequenceManager : MonoBehaviour {
     static public SequenceManager S;
     public GameObject bola;
+	public AudioClip laugh;
+	public AudioClip laughs;
+	public AudioSource efxSource;
 
-    public List<SequenceNode> current_sequence;
+	public List<SequenceNode> current_sequence;
 
     void Awake(){
         S = this;
@@ -81,7 +85,13 @@ public class SequenceManager : MonoBehaviour {
             case "Sleep":
                 closeEyes ();
                 break;
-            default: break;
+			case "Laugh":
+				ReproduceSound(laugh);
+				break;
+			case "Laughs":
+				ReproduceSound(laughs);
+				break;
+			default: break;
             }
             break;
         }
@@ -96,4 +106,11 @@ public class SequenceManager : MonoBehaviour {
     void closeEyes(){
         GameObject.Find ("Eyes").GetComponent<Sleep>().sleep();
     }
+
+	void ReproduceSound(AudioClip clip)
+	{
+		efxSource.clip = clip;
+
+		efxSource.Play();
+	}
 }
