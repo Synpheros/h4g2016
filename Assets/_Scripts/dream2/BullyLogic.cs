@@ -8,7 +8,6 @@ public class BullyLogic : MonoBehaviour
     public GameObject paperBallPrefab;
 
     private GameObject dream2;
-    private List<RectTransform> paperBalls;
     private Graphic background;
     private int hitCount;
     private float totalDreamTime, remainingDreamTime;
@@ -23,8 +22,7 @@ public class BullyLogic : MonoBehaviour
         background.CrossFadeColor(new Color(0f, 0f, 0f, 1f), totalDreamTime, false, false);
         dream2.transform.FindChild("D2 Bully").GetComponent<Graphic>().CrossFadeColor(new Color(0f, 0f, 0f, 1f), totalDreamTime, false, false);
 
-
-        paperBalls = new List<RectTransform>();
+        
         hitCount = 0;
         instantiateBall();
     }
@@ -32,6 +30,30 @@ public class BullyLogic : MonoBehaviour
     void instantiateBall()
     {
         GameObject paperBall = PrefabUtils.LoadPrefab(dream2.transform, paperBallPrefab);
+
+        PaperBall paperballComp = paperBall.GetComponent<PaperBall>();
+        paperballComp.onHitPlayer = () =>
+        {
+            Shake camShake = dream2.GetComponent<Shake>();
+            if (!camShake.Shaking)
+            {
+                camShake.DoShake();
+            }
+
+            hitCount++;
+
+            if (hitCount == 10)
+            {
+                wakeUp();
+                return;
+            }
+            initPaperBalls();
+        };
+
+        paperballComp.onClicked = () =>
+        {
+            initPaperBalls();
+        };
 
         paperBall.transform.localPosition = new Vector3(-Screen.width * .3f + Random.value * Screen.width * .6f,
             -Screen.height * .3f + Random.value * Screen.height * .6f, 0f);
@@ -41,7 +63,6 @@ public class BullyLogic : MonoBehaviour
         graphic.color = new Color(rgb, rgb, rgb, 1f);
         graphic.CrossFadeAlpha(0f, 0f, false);
         graphic.CrossFadeAlpha(1f, Random.value * 0.25f, false);
-        paperBalls.Add(paperBall.GetComponent<RectTransform>());
 
         paperBall.transform.localRotation = Quaternion.Euler(0, 0, Random.value > 0.5f ? -1f : 1f);
     }
@@ -52,61 +73,7 @@ public class BullyLogic : MonoBehaviour
 
         if (remainingDreamTime < 0f)
         {
-
             wakeUp();
-
-        }
-    }
-
-    void FixedUpdate()
-    {
-
-        for (int i = 0; i < paperBalls.Count; ++i)
-        {
-            RectTransform paperBall = paperBalls[i];
-            if (paperBall == null)
-            {
-                paperBalls.RemoveAt(i);
-                initPaperBalls();
-                return;
-            }
-
-            // Rotation interpolation
-            float rotationSpeed = 2f;
-            float rotation = paperBall.localRotation.eulerAngles.z;
-            rotation += rotation > 0 ? rotationSpeed : -rotationSpeed;
-            paperBall.localRotation = Quaternion.Euler(0, 0, rotation);
-
-            // Scale interpolation
-            float scaleSpeed = 0.025f;
-            Vector3 scale = paperBall.localScale;
-            scale.x += scaleSpeed;
-            scale.y = scale.x;
-            if (scale.x > 5f)
-            {
-                Destroy(paperBall.gameObject);
-                Shake camShake = dream2.GetComponent<Shake>();
-                if (!camShake.Shaking)
-                {
-                    camShake.DoShake();
-                }
-
-                hitCount++;
-
-                if (hitCount == 10)
-                {
-                    wakeUp();
-                    return;
-                }
-
-                paperBalls.Remove(paperBall);
-                initPaperBalls();
-            }
-            else
-            {
-                paperBall.localScale = scale;
-            }
-
         }
     }
 
@@ -117,7 +84,6 @@ public class BullyLogic : MonoBehaviour
             instantiateBall();
         }
         instantiateBall();
-
     }
 
 
