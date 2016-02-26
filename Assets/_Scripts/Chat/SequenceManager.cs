@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum SequenceNodeType {SMS, DIALOG};
+public enum SequenceNodeType {SMS, DIALOG, ACTION};
 
 public class SequenceNode{
     public SequenceNodeType type;
@@ -10,6 +10,11 @@ public class SequenceNode{
     public string text;
     public string talker;
     public int[] talkers;
+
+    public SequenceNode(string action){
+        this.type = SequenceNodeType.ACTION;
+        this.text = text;
+    }
 
     public SequenceNode(string text, bool receive, string talker = ""){
         this.type = SequenceNodeType.SMS;
@@ -27,6 +32,7 @@ public class SequenceNode{
 
 public class SequenceManager : MonoBehaviour {
     static public SequenceManager S;
+    public GameObject bola;
 
     public List<SequenceNode> current_sequence;
 
@@ -34,12 +40,12 @@ public class SequenceManager : MonoBehaviour {
         S = this;
         this.current_sequence = null;
     }
-	void Start () {
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start () {
+
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (Input.GetMouseButtonDown (0)) {
             if (this.current_sequence != null && this.current_sequence.Count > 0) {
                 SequenceNode current = current_sequence [0];
@@ -48,7 +54,7 @@ public class SequenceManager : MonoBehaviour {
             }else
                 Chat.S.fade_out (GameObject.Find("content"));
         } 
-	}
+    }
 
     void runNode(SequenceNode sn){
         switch (sn.type) {
@@ -62,6 +68,15 @@ public class SequenceManager : MonoBehaviour {
         case SequenceNodeType.DIALOG:
             Chat.S.talk (sn.talkers, sn.text);
             break;
+        case SequenceNodeType.ACTION:
+                shootBall ();
+            break;
         }
+    }
+
+    void shootBall(){
+        PrefabUtils.LoadPrefab (GameObject.Find ("Chat").transform, bola).GetComponent<PaperBall>().onHitPlayer = ()=>{
+            GameObject.Find ("Background").GetComponent<Shake>().DoShake();
+        };
     }
 }
