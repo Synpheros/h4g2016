@@ -41,6 +41,7 @@ public class SequenceManager : MonoBehaviour {
 	public AudioClip laughs;
 	public AudioClip teacherSteps;
 	public AudioSource efxSource;
+	public Sprite bg;
 
 	public List<SequenceNode> current_sequence;
 
@@ -108,6 +109,12 @@ public class SequenceManager : MonoBehaviour {
 				case "Teacher":
 					EnterTeacher(teacherSteps);
 					break;
+				case "Scene":
+					ChangeBg();
+					break;
+				case "Position":
+					ChangeBg();
+                    break;
 				default: break;
             }
             break;
@@ -135,5 +142,15 @@ public class SequenceManager : MonoBehaviour {
 	{
 		efxSource.clip = clip;
 		efxSource.Play();
+	}
+
+	void ChangeBg()
+	{
+		GameObject.Find("BgImage").GetComponent<SpriteRenderer>().sprite = bg;
+	}
+
+	void ChangeScene()
+	{
+		//Scene
 	}
 }
