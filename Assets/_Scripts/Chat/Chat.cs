@@ -12,6 +12,7 @@ public class Chat : MonoBehaviour {
     public GameObject sendBubble;
     public GameObject amistad_bubble;
     public GameObject borrar_bubble;
+    public GameObject alert_bubble;
 
     private GameObject content;
 
@@ -47,7 +48,6 @@ public class Chat : MonoBehaviour {
             time_since_last_msg = 0;
             if (current_text.Length < text_to_show.Length) {
                 addCharacter ();
-                Debug.Log ("char");
             }
         }
 	}
@@ -117,6 +117,20 @@ public class Chat : MonoBehaviour {
 
         bubble.transform.localPosition = new Vector3 (300  + (bubble.GetComponent<RectTransform> ().rect.width/2), 0, 0);
         bubble.GetComponent<Bubble> ().text = "¿Deseas borrar la foto?";
+
+        this.bubbles.Add (bubble);
+
+        this.pushBubbles (75f);
+    }
+
+    public void mensajeAlerta(string text){
+        GameObject bubble = GameObject.Instantiate (alert_bubble);
+        bubble.transform.SetParent (content.transform);
+
+        bubble.transform.localScale = new Vector3 (1.5f, 1.5f, 1.5f);
+
+        bubble.transform.localPosition = new Vector3 (300  + (bubble.GetComponent<RectTransform> ().rect.width/2), 0, 0);
+        bubble.GetComponent<Bubble> ().text = text;
 
         this.bubbles.Add (bubble);
 
