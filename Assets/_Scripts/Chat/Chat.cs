@@ -63,7 +63,7 @@ public class Chat : MonoBehaviour {
         bubble.transform.SetParent (content.transform);
 
 
-        bubble.transform.localScale = new Vector3 (1.5f, 1.5f, 1.5f);
+        bubble.transform.localScale = new Vector3 (1f, 1f, 1f);
 
         bubble.GetComponent<Bubble> ().text = text;
         bubble.GetComponent<Bubble> ().resize ();
@@ -80,7 +80,7 @@ public class Chat : MonoBehaviour {
         bubble.transform.SetParent (content.transform);
 
 
-        bubble.transform.localScale = new Vector3 (1.5f, 1.5f, 1.5f);
+        bubble.transform.localScale = new Vector3 (1f, 1f, 1f);
 
         bubble.GetComponent<Bubble> ().text = text;
         bubble.GetComponent<Bubble> ().resize ();
@@ -98,7 +98,7 @@ public class Chat : MonoBehaviour {
         bubble.transform.SetParent (content.transform);
 
 
-        bubble.transform.localScale = new Vector3 (1.5f, 1.5f, 1.5f);
+        bubble.transform.localScale = new Vector3 (1f, 1f, 1f);
 
         bubble.transform.localPosition = new Vector3 (300  + (bubble.GetComponent<RectTransform> ().rect.width/2), 0, 0);
         bubble.GetComponent<Bubble> ().text = text + " quiere ser tu amig@";
@@ -113,7 +113,7 @@ public class Chat : MonoBehaviour {
         bubble.transform.SetParent (content.transform);
 
 
-        bubble.transform.localScale = new Vector3 (1.5f, 1.5f, 1.5f);
+        bubble.transform.localScale = new Vector3 (1f, 1f, 1f);
 
         bubble.transform.localPosition = new Vector3 (300  + (bubble.GetComponent<RectTransform> ().rect.width/2), 0, 0);
         bubble.GetComponent<Bubble> ().text = "¿Deseas borrar la foto?";
@@ -127,7 +127,7 @@ public class Chat : MonoBehaviour {
         GameObject bubble = GameObject.Instantiate (alert_bubble);
         bubble.transform.SetParent (content.transform);
 
-        bubble.transform.localScale = new Vector3 (1.5f, 1.5f, 1.5f);
+        bubble.transform.localScale = new Vector3 (1f, 1f, 1f);
 
         bubble.transform.localPosition = new Vector3 (300  + (bubble.GetComponent<RectTransform> ().rect.width/2), 0, 0);
         bubble.GetComponent<Bubble> ().text = text;

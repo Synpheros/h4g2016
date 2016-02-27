@@ -24,7 +24,7 @@ public class Room4 : MonoBehaviour {
         sequence.Add(new SequenceNode("Alicia, No me dejes :(", false));
         sequence.Add(new SequenceNode("No se si podré aguantar...", true, "Alicia"));
         sequence.Add(new SequenceNode("Por favor... No me abandones...", false));
-        sequence.Add(new SequenceNode (" ... ", true, "Alicia"));
+        sequence.Add(new SequenceNode (" ...       ", true, "Alicia"));
         sequence.Add(new SequenceNode ("Sleep"));
 
         SequenceManager.S.current_sequence = sequence;
