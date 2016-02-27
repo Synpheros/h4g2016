@@ -32,7 +32,7 @@ public class Room6 : MonoBehaviour
         else
         {
             note.SetActive(true);
-            ClickToStart.SetActive(true);
+            ClickToStart.SetActive(false);
             hab.GetComponent<SpriteRenderer>().sprite = habFinal;
             clickToStartText.text = "Final... (" + delay + " para continuar)";
             loadMenu();
