@@ -17,7 +17,8 @@ public class School3 : MonoBehaviour {
 		sequence.Add(new SequenceNode("Ventu: Y tú, Alicia, ten cuidado con quién te juntas, no vaya a pegarte su idiotez", new int[]{3,-1,1}));
         sequence.Add(new SequenceNode("Alicia: ...", new int[]{3,-1,1}));
         sequence.Add(new SequenceNode("Alicia: No te preocupes, yo estoy contigo...", new int[]{-1,21,-1}));
-
+		sequence.Add(new SequenceNode("Teacher"));
+		sequence.Add(new SequenceNode("Profesor: Empecemos la clase", new int[] { -1, 40, -1 }));
 
 		SequenceManager.S.current_sequence = sequence;
 	}
