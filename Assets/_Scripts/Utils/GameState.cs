@@ -48,9 +48,11 @@ public class GameState {
         scenes.Add (new SceneDef("Jueves","Casa - 10:04 PM","room4"));
         scenes.Add (new SceneDef("Jueves","","dream4"));
 
-        scenes.Add (new SceneDef("Martes","Instituto - 9:47 AM","day5"));
-        scenes.Add (new SceneDef("Martes","Casa - 10:28 PM","room5"));
-        scenes.Add (new SceneDef("Martes","","dream5"));
+        scenes.Add (new SceneDef("Viernes","Instituto - 9:47 AM","day5"));
+        scenes.Add (new SceneDef("Viernes","Casa - 10:28 PM","room5"));
+        scenes.Add (new SceneDef("Viernes","","dream5"));
+
+        scenes.Add (new SceneDef("Sabado","Casa - 4:34 AM","day6"));
     }
 
     public SceneDef nextScene()
