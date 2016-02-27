@@ -24,6 +24,8 @@ public class School1 : MonoBehaviour {
 
 		sequence.Add(new SequenceNode("Profesor: ¡VENTU! ¡En silencio! ...Tranquilízate, no hace falta que sigas, seguro que con el tiempo haces muchos amigos.", new int[]{ -1, 40, -1 }));
 
+        sequence.Add(new SequenceNode("Transition"));
+
 		SequenceManager.S.current_sequence = sequence;
 	}
 	

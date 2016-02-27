@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum SequenceNodeType {SMS, DIALOG, ACTION};
 
@@ -54,15 +55,29 @@ public class SequenceManager : MonoBehaviour {
 	}
 
     // Update is called once per frame
+
+
+    private float msg_time = 2f;
+    private float time_since_last_msg = 0;
+
+    bool eyes_closed = false;
     void Update () {
         if (Input.GetMouseButtonDown (0)) {
             if (this.current_sequence != null && this.current_sequence.Count > 0) {
                 SequenceNode current = current_sequence [0];
                 current_sequence.Remove (current);
                 runNode (current);
-            }else
-                Chat.S.fade_out (GameObject.Find("content"));
+            } else 
+                Chat.S.fade_out (GameObject.Find ("content"));
         } 
+
+        if(eyes_closed){
+            time_since_last_msg += Time.deltaTime;
+            if (time_since_last_msg > msg_time) {
+                time_since_last_msg = 0;
+                SceneManager.LoadScene (GameState.S.nextScene ().next_scene);
+            }
+        }
     }
 
     void runNode(SequenceNode sn){
@@ -115,6 +130,9 @@ public class SequenceManager : MonoBehaviour {
 				case "Position":
 					ChangeBg();
                     break;
+                case "Transition":
+                    loadTransition ();
+                    break;
 				default: break;
             }
             break;
@@ -129,6 +147,7 @@ public class SequenceManager : MonoBehaviour {
 
     void closeEyes(){
         GameObject.Find ("Eyes").GetComponent<Sleep>().sleep();
+        eyes_closed = true;
     }
 
 	void ReproduceSound(AudioClip clip)
@@ -149,8 +168,8 @@ public class SequenceManager : MonoBehaviour {
 		GameObject.Find("BgImage").GetComponent<SpriteRenderer>().sprite = bg;
 	}
 
-	void ChangeScene()
+	void loadTransition()
 	{
-		//Scene
+        SceneManager.LoadScene ("transition");
 	}
 }

@@ -20,7 +20,7 @@ public class SlideScene : MonoBehaviour {
         fade_in ();
 	}
 	
-    private float msg_time = 3f;
+    private float msg_time = 1.5f;
     private float time_since_last_msg = 0;
     int times = 0;
     void Update () {
@@ -46,7 +46,7 @@ public class SlideScene : MonoBehaviour {
         for (int i = 0; i < graphics.Length; ++i)
         {
             graphics[i].CrossFadeAlpha(0f, 0f, false);
-            graphics[i].CrossFadeAlpha(1f, 3f, false);
+            graphics[i].CrossFadeAlpha(1f, 1.5f, false);
         }
     }
 
@@ -55,7 +55,7 @@ public class SlideScene : MonoBehaviour {
 
         for (int i = 0; i < graphics.Length; ++i)
         {
-            graphics[i].CrossFadeAlpha(0f, 3f, false);
+            graphics[i].CrossFadeAlpha(0f, 1.5f, false);
         }
     }
 }
