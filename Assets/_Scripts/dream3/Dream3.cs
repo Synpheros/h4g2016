@@ -79,7 +79,10 @@ public class Dream3 : MonoBehaviour
 
     void wakeUp()
     {
-        // TODO Wake up and go to Day 3
+        // TODO Wake up and go to Day 4
+        if (!PrefabUtils.IS_DAY_5)
+        {
 
+        }
     }
 }

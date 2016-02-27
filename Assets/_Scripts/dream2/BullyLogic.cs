@@ -91,6 +91,9 @@ public class BullyLogic : MonoBehaviour
     void wakeUp()
     {
         // TODO Wake up and go to Day 3
+        if (!PrefabUtils.IS_DAY_5)
+        {
 
+        }
     }
 }

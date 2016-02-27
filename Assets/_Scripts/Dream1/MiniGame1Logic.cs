@@ -13,7 +13,7 @@ public class MiniGame1Logic : MonoBehaviour {
 
 	void Update()
 	{
-		if(canvasTransform.childCount == 0)
+		if(canvasTransform.childCount == 1)
 		{
 			EndDream();
         }

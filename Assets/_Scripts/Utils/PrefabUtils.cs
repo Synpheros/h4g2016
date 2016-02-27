@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public static class PrefabUtils
 {
+    public static bool IS_DAY_5 = false;
 
     /**
       Prefab Staitc Utilities

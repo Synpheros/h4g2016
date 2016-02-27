@@ -92,7 +92,6 @@ public class Dream4 : MonoBehaviour
         string newText = TEXT_MSGS[(int)Random.Range(0, (float)TEXT_MSGS.Length)];
         for (int i = 0; i < texts.Length; ++i)
         {
-            Debug.Log(i);
             texts[i].text = newText;
         }
 
@@ -109,7 +108,10 @@ public class Dream4 : MonoBehaviour
 
     void wakeUp()
     {
-        // TODO Wake up and go to Day 3
+        // TODO Wake up and go to Day 5
+        if (!PrefabUtils.IS_DAY_5)
+        {
 
+        }
     }
 }
