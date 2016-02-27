@@ -14,8 +14,6 @@ public class School2 : MonoBehaviour {
 		sequence.Add(new SequenceNode("Ventu: Si, de la manita, no sea que se pierda de camino", new int[] { 22, -1,  1}));
         sequence.Add(new SequenceNode("*Toda la clase rie a carcajadas*", new int[] { 1, 11, 31}));
         sequence.Add(new SequenceNode("Laughs"));
-		
-		sequence.Add(new SequenceNode("Ventu: Y tú, Alicia, ten cuidado con quién te juntas, no vaya a pegarte su idiotez", new int[]{3,-1,22}));
 		sequence.Add(new SequenceNode("Teacher"));
 		sequence.Add(new SequenceNode("Profesor: Venga chichos, va a empezar la clase", new int[]{ -1, 40, -1 }));
 		sequence.Add(new SequenceNode("Position"));

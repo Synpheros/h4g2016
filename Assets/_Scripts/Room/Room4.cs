@@ -19,7 +19,7 @@ public class Room4 : MonoBehaviour {
         sequence.Add(new SequenceNode("-Teresa ha comentado en tu foto-\nQue pasa ¿Es tu novio?", true, "Teresa"));
         sequence.Add(new SequenceNode("-Raúl ha comentado en tu foto-\nEres tan inútil como el.", true, "Raúl"));
         sequence.Add(new SequenceNode("-Miguel ha comentado en tu foto-\nEs que con esa cara jjaja", true, "Miguel"));
-        sequence.Add(new SequenceNode("-Nerea ha comentado en tu foto-\nMoriros ya.", true, "Nerea"));
+        sequence.Add(new SequenceNode("-Nerea ha comentado en tu foto-\nMorid ya.", true, "Nerea"));
         sequence.Add(new SequenceNode("-Ventu ha comentado en tu foto-\nExactamente...", true, "Ventu"));
         sequence.Add(new SequenceNode("Alicia, No me dejes :(", false));
         sequence.Add(new SequenceNode("No se si podré aguantar...", true, "Alicia"));
