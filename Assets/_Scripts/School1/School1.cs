@@ -18,9 +18,9 @@ public class School1 : MonoBehaviour {
         sequence.Add(new SequenceNode("Tú: Soy...", new int[]{-1,-1,-1}));
         sequence.Add(new SequenceNode("Tú: Soy... Soy... Vengo...", new int[]{-1,-1,-1}));
 
-        sequence.Add(new SequenceNode("*Cuchicheo inaudible*", new int[] {32, 4, -1}));
+        sequence.Add(new SequenceNode("*Cuchicheo inaudible*", new int[] {-1, 32, 4}));
         sequence.Add(new SequenceNode("Tú: Y bueno... Eso...", new int[]{-1,-1,-1}));
-        sequence.Add(new SequenceNode("Ventu: Madre mia... ¡Espabila!", new int[]{0,-1,-1}));
+        sequence.Add(new SequenceNode("Ventu: Madre mia... ¡Espabila!", new int[]{-1,-1,0}));
 
 		sequence.Add(new SequenceNode("Profesor: ¡VENTU! ¡En silencio! ...Tranquilízate, no hace falta que sigas, seguro que con el tiempo haces muchos amigos.", new int[]{ -1, 40, -1 }));
 
