@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public enum SequenceNodeType {SMS, DIALOG, ACTION};
 
@@ -13,7 +14,7 @@ public class SequenceNode{
     public int[] talkers;
 
 
-    public SequenceNode(string action){
+	public SequenceNode(string action){
         this.type = SequenceNodeType.ACTION;
         this.text = action;
     }
@@ -38,6 +39,7 @@ public class SequenceManager : MonoBehaviour {
     public GameObject bola;
 	public AudioClip laugh;
 	public AudioClip laughs;
+	public AudioClip teacherSteps;
 	public AudioSource efxSource;
 
 	public List<SequenceNode> current_sequence;
@@ -45,10 +47,10 @@ public class SequenceManager : MonoBehaviour {
     void Awake(){
         S = this;
         this.current_sequence = null;
-    }
-    void Start () {
+	}
 
-    }
+    void Start () {
+	}
 
     // Update is called once per frame
     void Update () {
@@ -88,19 +90,22 @@ public class SequenceManager : MonoBehaviour {
             break;
         case SequenceNodeType.ACTION:
             switch (sn.text) {
-            case "ShootBall":
-                shootBall ();
-                break;
-            case "Sleep":
-                closeEyes ();
-                break;
-			case "Laugh":
-				ReproduceSound(laugh);
-				break;
-			case "Laughs":
-				ReproduceSound(laughs);
-				break;
-			default: break;
+				case "ShootBall":
+					shootBall ();
+					break;
+				case "Sleep":
+					closeEyes ();
+					break;
+				case "Laugh":
+					ReproduceSound(laugh);
+					break;
+				case "Laughs":
+					ReproduceSound(laughs);
+					break;
+				case "Teacher":
+					EnterTeacher(teacherSteps);
+					break;
+				default: break;
             }
             break;
         }
@@ -120,6 +125,12 @@ public class SequenceManager : MonoBehaviour {
 	{
 		efxSource.clip = clip;
 
+		efxSource.Play();
+	}
+
+	void EnterTeacher(AudioClip clip)
+	{
+		efxSource.clip = clip;
 		efxSource.Play();
 	}
 }
