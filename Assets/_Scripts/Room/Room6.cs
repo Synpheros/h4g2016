@@ -11,7 +11,7 @@ public class Room6 : MonoBehaviour
     private GameObject ClickToStart, note;
     private Text clickToStartText;
     private bool isFading = false;
-    private int delay = 6;
+    private int delay = 11;
 
 
     // Use this for initialization
