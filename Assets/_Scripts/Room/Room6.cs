@@ -3,17 +3,20 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Room6 : MonoBehaviour {
+public class Room6 : MonoBehaviour
+{
 
     public Sprite habPrincipio, habFinal;
     public bool isIntro = false;
     private GameObject ClickToStart, note;
     private Text clickToStartText;
     private bool isFading = false;
+    private int delay = 6;
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         ClickToStart = GameObject.Find("ClickToStart");
         clickToStartText = ClickToStart.GetComponent<Text>();
@@ -25,35 +28,45 @@ public class Room6 : MonoBehaviour {
             note.SetActive(false);
             ClickToStart.SetActive(true);
             hab.GetComponent<SpriteRenderer>().sprite = habPrincipio;
-        } else
+        }
+        else
         {
             note.SetActive(true);
             ClickToStart.SetActive(true);
             hab.GetComponent<SpriteRenderer>().sprite = habFinal;
-            clickToStartText.text = "Final... (click para continuar)";
-
+            clickToStartText.text = "Final... (" + delay + " para continuar)";
+            loadMenu();
         }
         clickToStartText.CrossFadeAlpha(0f, 0f, false);
         isFading = true;
         crossFadeText();
-        this.gameObject.transform.Find("ClickButton").GetComponent<Button>().onClick.AddListener(() =>
+        GameObject.Find("ClickButton").GetComponent<Button>().onClick.AddListener(() =>
         {
-            if(isIntro)
+            if (isIntro)
             {
                 isFading = false;
-                Invoke("transition", 2f);
-            } else
-            {
-                note.GetComponent<Image>().CrossFadeAlpha(0f, 1.5f, false);
-                Invoke("loadMenu", 2f);
+                Invoke("transition", 0.5f);
             }
         });
 
     }
 
+    void transition()
+    {
+        SceneManager.LoadScene("transition");
+    }
+
     void loadMenu()
     {
-        SceneManager.LoadScene("menu");
+        delay--;
+        if (delay == 0)
+        {
+            SceneManager.LoadScene("menu");
+        } else
+        {
+            clickToStartText.text = "Final... (" + delay + " para continuar)";
+        }
+        Invoke("loadMenu", 1f);
     }
 
     void crossFadeText()
@@ -61,16 +74,18 @@ public class Room6 : MonoBehaviour {
         if (isFading)
         {
             clickToStartText.CrossFadeAlpha(1f, 1f, false);
-        } else
+        }
+        else
         {
             clickToStartText.CrossFadeAlpha(0f, 1f, false);
         }
         isFading = !isFading;
         Invoke("crossFadeText", 1f);
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }
