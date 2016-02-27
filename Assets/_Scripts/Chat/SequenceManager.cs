@@ -81,6 +81,9 @@ public class SequenceManager : MonoBehaviour {
                 case "borrar":
                     Chat.S.mensajeBorrar ();
                     break;
+                case "notificacion":
+                    Chat.S.mensajeAlerta (sn.talker);
+                    break;
                 }
 
             }
