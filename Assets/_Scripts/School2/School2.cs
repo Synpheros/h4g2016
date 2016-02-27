@@ -6,6 +6,7 @@ public class School2 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        PrefabUtils.IS_DREAM_5 = false;
         List<SequenceNode> sequence = new List<SequenceNode> ();
 
         sequence.Add(new SequenceNode("Alicia: ...¿y cómo vienes hasta aquí todos los días?", new int[]{-1,3,-1}));

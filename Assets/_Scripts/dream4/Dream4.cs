@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Dream4 : MonoBehaviour
 {
@@ -108,10 +109,9 @@ public class Dream4 : MonoBehaviour
 
     void wakeUp()
     {
-        // TODO Wake up and go to Day 5
-        if (!PrefabUtils.IS_DAY_5)
+        if (!PrefabUtils.IS_DREAM_5)
         {
-
+            SceneManager.LoadScene("transition");
         }
     }
 }

@@ -5,7 +5,9 @@ using System.Collections.Generic;
 public class School3 : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        PrefabUtils.IS_DREAM_5 = false;
         List<SequenceNode> sequence = new List<SequenceNode> ();
 
 		sequence.Add(new SequenceNode("Ventu: ¿Habéis visto la foto que comenté ayer?  ¡Das pena!", new int[] { -1, 0, -1 }));

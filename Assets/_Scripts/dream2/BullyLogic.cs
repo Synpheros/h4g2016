@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BullyLogic : MonoBehaviour
 {
@@ -90,10 +91,9 @@ public class BullyLogic : MonoBehaviour
 
     void wakeUp()
     {
-        // TODO Wake up and go to Day 3
-        if (!PrefabUtils.IS_DAY_5)
+        if (!PrefabUtils.IS_DREAM_5)
         {
-
+            SceneManager.LoadScene("transition");
         }
     }
 }

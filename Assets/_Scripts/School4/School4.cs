@@ -7,8 +7,9 @@ public class School4 : MonoBehaviour
 
 	// Use this for initialization
 	void Start()
-	{
-		List<SequenceNode> sequence = new List<SequenceNode>();
+    {
+        PrefabUtils.IS_DREAM_5 = false;
+        List<SequenceNode> sequence = new List<SequenceNode>();
 
 		sequence.Add(new SequenceNode("Ventu: ya ha llegado el cobarde... ayer borró su foto.", new int[] { -1, 0, -1 }));
 		sequence.Add(new SequenceNode("Armando: Jajaja sí sí, esa foto en la que tenía cara de retrasado", new int[] { -1, -1, -1 }));

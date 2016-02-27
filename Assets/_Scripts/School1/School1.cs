@@ -6,6 +6,7 @@ public class School1 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        PrefabUtils.IS_DREAM_5 = false;
         List<SequenceNode> sequence = new List<SequenceNode> ();
 
         sequence.Add(new SequenceNode("Profesor: Buenos días a todos chicos, ¿Que tal estáis hoy? Espero que muy bien.", new int[]{-1,40,-1}));
