@@ -9,7 +9,7 @@ public class SequenceNode{
     public bool receive;
     public string text;
     public string talker;
-    public bool amistad;
+    public bool raro;
     public int[] talkers;
 
 
@@ -18,12 +18,12 @@ public class SequenceNode{
         this.text = action;
     }
 
-    public SequenceNode(string text, bool receive, string talker = "", bool amistad = false){
+    public SequenceNode(string text, bool receive, string talker = "", bool raro = false){
         this.type = SequenceNodeType.SMS;
         this.text = text;
         this.talker = talker;
         this.receive = receive;
-        this.amistad = amistad;
+        this.raro = raro;
     }
 
     public SequenceNode(string text, int[] talkers){
@@ -65,14 +65,23 @@ public class SequenceManager : MonoBehaviour {
     void runNode(SequenceNode sn){
         switch (sn.type) {
         case SequenceNodeType.SMS:
-            if (!sn.amistad) {
+            if (!sn.raro) {
                 if (sn.receive) {
                     Chat.S.receiveMessage (sn.text, sn.talker);
                 } else {
                     Chat.S.sendMessage (sn.text);
                 }
-            } else
-                Chat.S.mensajeAmistad (sn.talker);
+            } else {
+                switch (sn.text) {
+                case "amistad":
+                    Chat.S.mensajeAmistad (sn.talker);
+                    break;
+                case "borrar":
+                    Chat.S.mensajeBorrar ();
+                    break;
+                }
+
+            }
             break;
         case SequenceNodeType.DIALOG:
             Chat.S.talk (sn.talkers, sn.text);

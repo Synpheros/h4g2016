@@ -11,6 +11,7 @@ public class Chat : MonoBehaviour {
     public GameObject receiveBubble;
     public GameObject sendBubble;
     public GameObject amistad_bubble;
+    public GameObject borrar_bubble;
 
     private GameObject content;
 
@@ -101,6 +102,21 @@ public class Chat : MonoBehaviour {
 
         bubble.transform.localPosition = new Vector3 (300  + (bubble.GetComponent<RectTransform> ().rect.width/2), 0, 0);
         bubble.GetComponent<Bubble> ().text = text + " quiere ser tu amig@";
+
+        this.bubbles.Add (bubble);
+
+        this.pushBubbles (75f);
+    }
+
+    public void mensajeBorrar(){
+        GameObject bubble = GameObject.Instantiate (borrar_bubble);
+        bubble.transform.SetParent (content.transform);
+
+
+        bubble.transform.localScale = new Vector3 (1.5f, 1.5f, 1.5f);
+
+        bubble.transform.localPosition = new Vector3 (300  + (bubble.GetComponent<RectTransform> ().rect.width/2), 0, 0);
+        bubble.GetComponent<Bubble> ().text = "¿Deseas borrar la foto?";
 
         this.bubbles.Add (bubble);
 
