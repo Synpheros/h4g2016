@@ -20,6 +20,8 @@ public class Chat : MonoBehaviour {
 
     private List<GameObject> bubbles;
 
+    public Dictionary<string,Color> colors;
+
     public List<Sprite> characters;
     public Sprite transparente;
 
@@ -28,6 +30,44 @@ public class Chat : MonoBehaviour {
         S = this;
 
         this.bubbles = new List<GameObject> ();
+
+        this.colors = new Dictionary<string, Color> ();
+
+        Color ventu = Color.red;
+        ColorUtility.TryParseHtmlString ("#FFDDDDFF", out ventu);
+        this.colors.Add ("Ventu", ventu);
+
+        Color alicia = Color.green;
+        ColorUtility.TryParseHtmlString ("#F0FFDDFF", out alicia);
+        this.colors.Add ("Alicia", alicia);
+
+        Color ines = Color.magenta;
+        ColorUtility.TryParseHtmlString ("#FFDDF0FF", out  ines);
+        this.colors.Add ("Inés", ines);
+
+        Color armando = Color.yellow;
+        ColorUtility.TryParseHtmlString ("#DDF1FFFF", out armando);
+        this.colors.Add ("Armando", armando);
+
+        Color valentin = Color.cyan;
+        ColorUtility.TryParseHtmlString ("#C3FFFAFF", out valentin);
+        this.colors.Add ("Valentín", valentin);
+
+        Color teresa = Color.blue;
+        ColorUtility.TryParseHtmlString ("#E2FFC3FF", out teresa);
+        this.colors.Add ("Teresa", teresa);
+
+        Color raul = Color.magenta;
+        ColorUtility.TryParseHtmlString ("#FFF0C3FF", out raul);
+        this.colors.Add ("Raúl", raul);
+
+        Color miguel = Color.green;
+        ColorUtility.TryParseHtmlString ("#FFE2C3FF", out miguel);
+        this.colors.Add ("Miguel", miguel);
+
+        Color nerea = Color.blue;
+        ColorUtility.TryParseHtmlString ("#F4C3FFFF", out nerea);
+        this.colors.Add ("Nerea", nerea);
 
         this.content = GameObject.Find ("content");
 
@@ -84,7 +124,11 @@ public class Chat : MonoBehaviour {
 
         bubble.GetComponent<Bubble> ().text = text;
         bubble.GetComponent<Bubble> ().resize ();
-        bubble.GetComponent<Bubble> ().talker = talker;
+        if(!text.Contains("\n"))
+            bubble.GetComponent<Bubble> ().talker = talker;
+
+        if (colors.ContainsKey (talker))
+            bubble.GetComponentInChildren<Image> ().color = colors [talker];
 
         bubble.transform.localPosition = new Vector3 (200  + (bubble.GetComponent<RectTransform> ().rect.width/2), 0, 0);
 

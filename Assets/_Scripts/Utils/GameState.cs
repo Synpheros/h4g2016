@@ -50,7 +50,7 @@ public class GameState {
 
         scenes.Add (new SceneDef("Viernes","Instituto - 9:47 AM","day5"));
         scenes.Add (new SceneDef("Viernes","Casa - 10:28 PM","room5"));
-        scenes.Add (new SceneDef("Viernes","","dream5"));
+        scenes.Add (new SceneDef("Viernes","","dream6"));
 
         scenes.Add (new SceneDef("Sabado","Casa - 4:34 AM","day6"));
     }
