@@ -11,6 +11,10 @@
 
 [![Vídeo promocional en YouTube](http://img.youtube.com/vi/QyTIk7HvEu0/0.jpg)](http://www.youtube.com/watch?v=QyTIk7HvEu0)
 
+## Vídeo presentación en HackForGood 2016
+
+[![Vídeo promocional en YouTube](http://img.youtube.com/vi/d5Q4JWKtqSA/0.jpg)](http://www.youtube.com/watch?v=d5Q4JWKtqSA)
+
 ## Objetivo del proyecto
 
 El objetivo del proyecto es concienciar sobre la existencia del ciberbullying y sus consecuencias en nuestra sociedad. Surge del uso inadecuado de las nuevas tecnologías y se ve agravado por el uso temprano de servicios como pueden ser las redes sociales. Es un relevante problema social que puede tener consecuencias graves como el suicidio, la depresión o el fracaso escolar en adolescentes y en el que la sociedad no está aún lo suficientemente concienciada (alumnos, profesores, padres y adolescentes). Idenficarse y entender lo que se sufre cuando uno se siente acosado es la mejor forma de evitarlo.
