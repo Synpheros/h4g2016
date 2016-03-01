@@ -8,4 +8,5 @@
 * Recursos: [CC-BY-SA](https://creativecommons.org/licenses/by-nc-sa/3.0/)
 * 
 ## Vídeo promocional:
+
 [![Vídeo promocional en YouTube](http://img.youtube.com/vi/QyTIk7HvEu0/0.jpg)](http://www.youtube.com/watch?v=QyTIk7HvEu0)
