@@ -15,7 +15,7 @@
 
 El objetivo del proyecto es concienciar sobre la existencia del ciberbullying y sus consecuencias en nuestra sociedad. Surge del uso inadecuado de las nuevas tecnologías y se ve agravado por el uso temprano de servicios como pueden ser las redes sociales. Es un relevante problema social que puede tener consecuencias graves como el suicidio, la depresión o el fracaso escolar en adolescentes y en el que la sociedad no está aún lo suficientemente concienciada (alumnos, profesores, padres y adolescentes). Idenficarse y entender lo que se sufre cuando uno se siente acosado es la mejor forma de evitarlo.
 
-## Propuesta de valor de tu proyecto
+## Propuesta de valor del proyecto
 
 El videojuego va dirigido principalmente a niños de 12-16 años, edad desde la que se empieza a usar con asiduidad las redes sociales, los smartphones y los videojuegos online y en la que comienzan a aparecer situaciones de ciberbullying.
 
